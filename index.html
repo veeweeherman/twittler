@@ -5,38 +5,59 @@
     <script src="data_generator.js"></script>
   </head>
   <body>
+
+    <header>
+      <h2>Twittering
+        <input type="button" id="button" name="button" value="click here!"/>
+      </h2>
+    </header>
+
      <script>
         
       $(document).ready(function(){
+        
+        // $('.button').on('click', function() {
+        //   document.write("TWITTERING");
+        // }); 
+
+        var butt = document.getElementById('button');
+        butt.addEventListener('click', newTweets);
+
         var $body = $('body');
-        $body.html('');
 
+        function newTweets () {
+          //$body.html('');
 
-        var index = streams.home.length - 1;
-        console.log("index:",index)
-        while(index >= 0){
-          
-          var tweet = streams.home[index];
-          console.log("tweet:",tweet)
-         console.log(tweet.user)
-          var $tweet = $('<div></div>');
-          //$tweet.text('@' + tweet.user + ': ' + tweet.message);
-          //my attempt at the above + timestamp
-          $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' +tweet.created_at);
-          $tweet.appendTo($body);
-          index -= 1;
-          //attepting to isolate one user's tweets w/an if statement; 
-          if ( tweet.user === "shawndrost") {
-            document.write(tweet.message + ' @' + tweet.user )
+          var index = streams.home.length - 1;
+          //console.log("index:",index)
+          while(index >= 0) {
+            var tweet = streams.home[index];
+            var $tweet = $('<div></div>');
+            //$tweet.text('@' + tweet.user + ': ' + tweet.message);
+            //my attempt at the above + timestamp
+            $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
+            $tweet.appendTo($body);
+            index -= 1;
+            //attepting to isolate one user's tweets w/an if statement; 
+            // if ( tweet.user === "shawndrost") {
+            //   document.write(tweet.message + ' @' + tweet.user )
+            // }
+
+            // if ( tweet.user === "sharksforcheap") {
+            //   document.write(tweet.message + ' @' + tweet.user )
+            // }
+            //i think this ^^ works? when refresh, only shawndrosts posts are on screen; maybe make a button for this now...?
           }
-          //i think this ^^ works? when refresh, only shawndrosts posts are on screen
-
-        }
+              
+        $("body").css({"background-color" : "grey", 'font' : 'Helvetica'});
+        $("div").css({"background-color" : "green", 'font' : 'Arial'});
       
+        }
       });
 
+
     </script>
-    
+    <!-- /*attempting to add CSS to this shit*/ -->
     
     
   </body>
