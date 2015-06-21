@@ -18,13 +18,19 @@
           
           var tweet = streams.home[index];
           console.log("tweet:",tweet)
-          console.log(tweet.created_at)
+         console.log(tweet.user)
           var $tweet = $('<div></div>');
           //$tweet.text('@' + tweet.user + ': ' + tweet.message);
           //my attempt at the above + timestamp
           $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' +tweet.created_at);
           $tweet.appendTo($body);
           index -= 1;
+          //attepting to isolate one user's tweets w/an if statement; 
+          if ( tweet.user === "shawndrost") {
+            document.write(tweet.message + ' @' + tweet.user )
+          }
+          //i think this ^^ works? when refresh, only shawndrosts posts are on screen
+
         }
       
       });
