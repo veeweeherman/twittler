@@ -8,30 +8,45 @@
   <body>
 
 
-      <h1>Twittering
-        <input type="button" id="button" name="button" value="click here!"/>
+      <h1>Twittering Along<br>
+        <input type="button" id="button" name="button" value="click me to see my TaTas + Tweets"/><br>
+        <input type="button" id="sharksforcheap" name="button" value="@sharksforcheap tweets"/>
       </h1>
     
-<section>
+<aside>
      <script>
       $(document).ready(function(){
-        
-        // $('.button').on('click', function() {
-        //   document.write("TWITTERING");
-        // }); 
+
 
         var butt = document.getElementById('button');
         butt.addEventListener('click', newTweets);
 
+        var shark = document.getElementById('sharksforcheap');
+        shark.addEventListener('click', getSharksforcheap);
 
+
+          function getSharksforcheap () {
+            //show sharksforcheap's tweets and 
+            //delete all-users (everything from newTweets() )
+           console.log("shaaarrrkkk")
+            // if ( tweet.user === "sharksforcheap" ) {
+            //   // document.write(tweet.message + ' @' + tweet.user )
+            //     var shark = tweet.message + ' @' + tweet.user;
+            //     document.write(shark);
+            // }
+            //make a variable w all shark's twets
+          }
         function newTweets () {
-          var $body = $('section');
+
+
+          var $body = $('aside');
           $body.html('');
 
           var index = streams.home.length - 1;
-          //console.log("index:",index)
+          console.log("index:",index)
           while(index >= 0) {
             var tweet = streams.home[index];
+            console.log(tweet.user)
             var $tweet = $('<div></div>');
             //$tweet.text('@' + tweet.user + ': ' + tweet.message);
             //my attempt at the above + timestamp
@@ -39,9 +54,9 @@
             $tweet.appendTo($body);
             index -= 1;
             //attepting to isolate one user's tweets w/an if statement; 
-            // if ( tweet.user === "shawndrost") {
-            //   document.write(tweet.message + ' @' + tweet.user )
-            // }
+
+
+
 
             // if ( tweet.user === "sharksforcheap") {
             //   document.write(tweet.message + ' @' + tweet.user )
@@ -49,8 +64,8 @@
             //i think this ^^ works? when refresh, only shawndrosts posts are on screen; maybe make a button for this now...?
           }
               
-        $("body").css({"background-color" : "#ADD6FF", 'font' : 'Helvetica'});
-        $("div").css({"background-color" : "#5CADFF", 'font' : 'Arial'});
+        $("body").css({"background-color" : "#ADD6FF"});
+        $("div").css({"background-color" : "#ADFF5C" /*lime green*/ });
       
         }
       });
@@ -58,7 +73,7 @@
 
     </script>
     <!-- /*attempting to add CSS to this shit*/ -->
-    </section>
+    </aside>
     
   </body>
 </html>
