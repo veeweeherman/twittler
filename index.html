@@ -9,7 +9,7 @@
 
 
       <h1>Twittering Along<br>
-        <input type="button" id="button" name="button" value="click me to see my TaTas + Tweets"/><br>
+        <input type="button" id="button" name="button" value="click me to see my TaTas...err, I mean Tweets"/><br>
         <input type="button" id="sharksforcheap" name="button" value="@sharksforcheap tweets"/>
       </h1>
     
@@ -29,13 +29,29 @@
             //show sharksforcheap's tweets and 
             //delete all-users (everything from newTweets() )
            console.log("shaaarrrkkk")
-            // if ( tweet.user === "sharksforcheap" ) {
-            //   // document.write(tweet.message + ' @' + tweet.user )
-            //     var shark = tweet.message + ' @' + tweet.user;
-            //     document.write(shark);
-            // }
-            //make a variable w all shark's twets
-          }
+            var $body = $('aside');
+            $body.html('');
+              var index = streams.home.length - 1; //streams.home is array of every tweet object
+              //console.log("index:",index)
+              while(index >= 0) {
+                var tweet = streams.home[index];
+                //console.log(tweet) //the tweet object w user, message, created_at key-values
+                var $tweet = $('<div></div>');
+                console.log($tweet) //all the div-arrays for current tweet... has 2 props/indexes: 0: div and length:1; in div, at innerHTML is current tweet entire message
+                if ( tweet.user === "sharksforcheap" ) {
+                //   // document.write(tweet.message + ' @' + tweet.user )
+                //     var shark = tweet.message + ' @' + tweet.user;
+                //     document.write(shark);
+                $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
+                $tweet.appendTo($body); //attaches to html page element
+                //make a variable w all shark's tweets
+                // }
+                }
+                index -= 1;
+              }
+            $("div").css({"background-color" : "#DB4DB8" /*magenta*/ });
+          };
+        
         function newTweets () {
 
 
@@ -43,10 +59,10 @@
           $body.html('');
 
           var index = streams.home.length - 1;
-          console.log("index:",index)
+          //console.log("index:",index)
           while(index >= 0) {
             var tweet = streams.home[index];
-            console.log(tweet.user)
+            //console.log(tweet.user)
             var $tweet = $('<div></div>');
             //$tweet.text('@' + tweet.user + ': ' + tweet.message);
             //my attempt at the above + timestamp
@@ -54,9 +70,6 @@
             $tweet.appendTo($body);
             index -= 1;
             //attepting to isolate one user's tweets w/an if statement; 
-
-
-
 
             // if ( tweet.user === "sharksforcheap") {
             //   document.write(tweet.message + ' @' + tweet.user )
