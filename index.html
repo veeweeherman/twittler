@@ -11,6 +11,9 @@
       <h1>Twittering Along<br>
         <input type="button" id="button" name="button" value="click me to see my TaTas...err, I mean Tweets"/><br>
         <input type="button" id="sharksforcheap" name="button" value="@sharksforcheap tweets"/>
+        <input type="button" id="douglascalhoun" name="button" value="@douglascalhoun tweets"/><br>
+        <input type="button" id="shawndrost" name="button" value="@shawndroust tweets"/><br>
+        <input type="button" id="mracus" name="button" value="@mracus tweets"/><br>
       </h1>
     
 <aside>
@@ -24,6 +27,33 @@
         var shark = document.getElementById('sharksforcheap');
         shark.addEventListener('click', getSharksforcheap);
 
+        var doug = document.getElementById('douglascalhoun');
+        doug.addEventListener('click', getDouglascalhoun);
+
+        var shawn = document.getElementById('shawndrost');
+        shawn.addEventListener('click', getShawndrost);
+
+        var mracus = document.getElementById('mracus');
+        mracus.addEventListener('click', getMracus);
+
+
+          function getDouglascalhoun () {
+            var $body = $('aside');
+            $body.html('');
+              var index = streams.home.length - 1; 
+              while(index >= 0) {
+                var tweet = streams.home[index];
+                var $tweet = $('<div></div>');
+                
+                if ( tweet.user === "douglascalhoun" ) {
+         
+                $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
+                $tweet.appendTo($body); 
+                }
+                index -= 1;
+              }
+            $("div").css({"background-color" : "#FFFFAD" /*yellow*/ });
+          };
 
           function getSharksforcheap () {
             //show sharksforcheap's tweets and 
@@ -33,6 +63,8 @@
             $body.html('');
               var index = streams.home.length - 1; //streams.home is array of every tweet object
               //console.log("index:",index)
+              //var userNode = $('<a>' + '@' + tweet.user + '</a>'
+              //notes from Kim
               while(index >= 0) {
                 var tweet = streams.home[index];
                 //console.log(tweet) //the tweet object w user, message, created_at key-values
@@ -52,9 +84,42 @@
             $("div").css({"background-color" : "#DB4DB8" /*magenta*/ });
           };
         
+          function getShawndrost () {
+            var $body = $('aside');
+            $body.html('');
+              var index = streams.home.length - 1; 
+              while(index >= 0) {
+                var tweet = streams.home[index];
+                var $tweet = $('<div></div>');
+                if ( tweet.user === "shawndrost" ) {
+                  $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
+                  $tweet.appendTo($body); 
+                }
+
+                index -= 1;
+              }
+            $("div").css({"background-color" : "#333385" /*darkblue*/ });
+          };
+
+          function getMracus () {
+            var $body = $('aside');
+            $body.html('');
+              var index = streams.home.length - 1; 
+              while(index >= 0) {
+                var tweet = streams.home[index];
+                var $tweet = $('<div></div>');
+                if ( tweet.user === "mracus" ) {
+                  $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
+                  $tweet.appendTo($body); 
+                }
+
+                index -= 1;
+              }
+            $("div").css({"background-color" : "#B89470" /*brown*/ });
+          };
+
+
         function newTweets () {
-
-
           var $body = $('aside');
           $body.html('');
 
